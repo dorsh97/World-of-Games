@@ -1,4 +1,4 @@
-FROM python:3.12-slim
+FROM python:slim
 WORKDIR /app
 COPY . .
 RUN if [ ! -f Scores.txt ]; then touch Scores.txt; fi
