@@ -1,3 +1,4 @@
 CurrencyConverter
 Flask
 selenium
+webdriver_manager
