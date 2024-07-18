@@ -40,3 +40,6 @@ def score_server():
                 </html>
                 """
     return app.run("0.0.0.0")
+
+
+score_server()
