@@ -12,7 +12,7 @@ The project includes functionality for displaying your score on a web page using
 
 ## Installation
 
-### Prerequisites
+### Requirements
 - Python 3.x
 - Python-compatible IDE (optional)
 - pip (Python package installer)
