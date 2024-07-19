@@ -50,7 +50,7 @@ pipeline {
                 script {
                     writeFile file: 'e2e_test.py', text: """
 import sys
-from e2e import main_function
+from Utilities.e2e import main_function
 
 def e2e_test():
     port = sys.argv[1]
