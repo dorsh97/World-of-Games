@@ -42,7 +42,7 @@ You can also open the entire project using any Python-compatible IDE.
 
 ### Running the Scores Flask Application
 ```bash
-python main.py
+python main_score.py
 ```
 The application will start on http://localhost:5000
 
