@@ -12,7 +12,7 @@ def score_server():
         if os.path.exists(SCORES_FILE_NAME):
             with open(SCORES_FILE_NAME, 'r') as file:
                 score = file.read().strip()
-            if score.isdigit() and 1 <= score <= 1000:
+            if score.isdigit() and 1 <= int(score) <= 1000:
                 return f"""
                     <html>
                         <head>
