@@ -1,8 +1,16 @@
 # World of Games
 
 Welcome to the World of Games project!
-There are 3 main games to play - Currency Roullete Game, Guessing Game, and Memory Game.
+
+There are 3 main games to play:
+
+1. Currency Roulette Game
+2. Guessing Game
+3. Memory Game
+
 The project includes functionality for displaying your score on a web page using Flask.
+
+Additionally, the project uses a Jenkins pipeline for CI/CD, Docker for containerization, and includes testing for the Flask app.
 
 ## Table of Contents
 - [Installation](#installation)
