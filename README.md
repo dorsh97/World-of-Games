@@ -36,6 +36,7 @@ pip install -r requirements.txt
 ```bash
 python main.py
 ```
+You can also open the entire project using any Python-compatible IDE.
 
 ### Running the Scores Flask Application
 ```bash
