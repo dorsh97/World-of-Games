@@ -94,7 +94,7 @@ This project uses Jenkins for continuous integration and continuous deployment. 
 
 ## Manual Testing
 
-You can also test the Flask app manually from the 'Utilities' folder.
+You can also perform end-to-end testing of the Flask app manually from the Utilities folder.
 
 ```bash
 cd Utilities
