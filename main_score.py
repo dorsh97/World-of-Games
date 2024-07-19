@@ -8,10 +8,10 @@ def score_server():
     app = Flask(__name__)
 
     @app.route("/")
-    def flask():
+    def flask_score_display():
         if os.path.exists(SCORES_FILE_NAME):
             with open(SCORES_FILE_NAME, 'r') as file:
-                score = file.read()
+                score = file.read().strip()
             if score.isdigit():
                 return f"""
                     <html>
