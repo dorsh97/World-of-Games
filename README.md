@@ -15,6 +15,7 @@ Additionally, the project uses a Jenkins pipeline for CI/CD, Docker for containe
 ## Table of Contents
 - [Installation](#installation)
 - [Usage](#usage)
+- [Manual Testing](#manual-testing)
 - [Docker](#docker)
 - [Jenkins CI/CD Pipeline](#jenkins-cicd-pipeline)
 
@@ -91,5 +92,15 @@ This project uses Jenkins for continuous integration and continuous deployment. 
 5. Finalize: Pushes the Docker image to Docker Hub and cleans up resources.
 6. Post Actions: Ensures cleanup of Docker containers and images, and workspace.
 
+## Manual Testing
+
+You can also test the Flask app manually from the 'Utilities' folder.
+
+```bash
+cd Utilities
+```
+```bash
+python main_score.py
+```
 
 Have fun!
