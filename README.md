@@ -15,9 +15,9 @@ Additionally, the project uses a Jenkins pipeline for CI/CD, Docker for containe
 ## Table of Contents
 - [Installation](#installation)
 - [Usage](#usage)
-- [Manual Testing](#manual-testing)
 - [Docker](#docker)
 - [Jenkins CI/CD Pipeline](#jenkins-cicd-pipeline)
+- [Manual Testing](#manual-testing)
 
 ## Installation
 
