@@ -1,5 +1,5 @@
 import random
-from utils import check_range_int
+from Utilities.utils import check_range_int
 
 
 def generate_number(game_diff):
