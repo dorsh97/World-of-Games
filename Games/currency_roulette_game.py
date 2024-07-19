@@ -1,7 +1,7 @@
 import random
 import requests
 from currency_converter import CurrencyConverter
-from utils import check_user_input_num
+from Utilities.utils import check_user_input_num
 
 
 def get_money_interval(game_diff):
