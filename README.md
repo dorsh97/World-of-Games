@@ -22,6 +22,8 @@ The project includes functionality for displaying your score on a web page using
 ### Clone the Repository
 ```bash
 git clone https://github.com/dorsh97/World-of-Games.git
+```
+```bash
 cd World-of-Games
 ```
 
