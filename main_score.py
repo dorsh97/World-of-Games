@@ -6,12 +6,13 @@ from utils import BAD_RETURN_CODE
 
 def score_server():
     app = Flask(__name__)
-    if os.path.exists(SCORES_FILE_NAME):
-        with open(SCORES_FILE_NAME, 'r') as file:
-            score = file.read()
-        if score.isdigit():
-            @app.route("/")
-            def flask():
+
+    @app.route("/")
+    def flask():
+        if os.path.exists(SCORES_FILE_NAME):
+            with open(SCORES_FILE_NAME, 'r') as file:
+                score = file.read()
+            if score.isdigit():
                 return f"""
                     <html>
                         <head>
@@ -23,11 +24,9 @@ def score_server():
                         </body>
                     </html>
                     """
-        else:
-            score = BAD_RETURN_CODE
-    if not os.path.exists(SCORES_FILE_NAME) or score == BAD_RETURN_CODE:
-        @app.route("/")
-        def flask():
+            else:
+                score = BAD_RETURN_CODE
+        if not os.path.exists(SCORES_FILE_NAME) or score == BAD_RETURN_CODE:
             return f"""
                 <html>
                     <head>
@@ -39,8 +38,11 @@ def score_server():
                     </body>
                 </html>
                 """
+    
     return app
 
 
 app = score_server()
-app.run("0.0.0.0")
+
+if __name__ == "__main__":
+    app.run("0.0.0.0")
