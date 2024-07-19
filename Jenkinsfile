@@ -5,6 +5,7 @@ pipeline {
     
     environment {
         DOCKER_HUB_CREDENTIALS = credentials('dockerhub-credentials-id')
+        // Parameters for testing:
         DOCKER_HUB_REPO = 'dorsh97/wog-flask'
         TESTING_CONTAINER_NAME = 'wog-flask-container'
         TESTING_PORT = '8777'
