@@ -1,7 +1,7 @@
 import os
 from flask import Flask
-from utils import SCORES_FILE_NAME
-from utils import BAD_RETURN_CODE
+from Utilities.utils import SCORES_FILE_NAME
+from Utilities.utils import BAD_RETURN_CODE
 
 
 def score_server():
