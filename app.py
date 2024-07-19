@@ -1,6 +1,6 @@
-from currency_roulette_game import play as currency_roulette_game_play
-from guess_game import play as guess_game_play
-from memory_game import play as memory_game_play
+from Games.currency_roulette_game import play as currency_roulette_game_play
+from Games.guess_game import play as guess_game_play
+from Games.memory_game import play as memory_game_play
 from Utilities.utils import check_range_int
 from Utilities.score import add_score
 
