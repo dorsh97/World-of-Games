@@ -10,7 +10,7 @@ There are 3 main games to play:
 
 The project includes functionality for displaying your score on a web page using Flask.
 
-Additionally, the project uses a Jenkins pipeline for CI/CD, Docker for containerization, and includes testing for the Flask app.
+Additionally, the project uses a Jenkins pipeline for CI/CD, Docker for containerization, and includes Selenium testing for the Flask app.
 
 ## Table of Contents
 - [Installation](#installation)
