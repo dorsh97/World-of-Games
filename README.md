@@ -100,7 +100,7 @@ You can also test the Flask app manually from the 'Utilities' folder.
 cd Utilities
 ```
 ```bash
-python main_score.py
+python e2e.py
 ```
 
 Have fun!
