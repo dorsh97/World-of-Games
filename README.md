@@ -95,7 +95,7 @@ This project uses Jenkins for continuous integration and continuous deployment. 
 
 ## Manual Testing
 
-You can also perform end-to-end testing of the Flask app manually from the `Utilities` folder. (note that `5000` is the port number)
+You can also perform end-to-end testing of the Flask app manually from the `Utilities` folder.
 
 ```bash
 cd Utilities
@@ -103,6 +103,7 @@ cd Utilities
 ```bash
 python e2e.py 5000
 ```
+(note that `5000` is the port number)
 
 ##
 
