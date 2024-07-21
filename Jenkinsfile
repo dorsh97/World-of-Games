@@ -106,9 +106,9 @@ pipeline {
 
                 try {
                     if (isUnix()) {
-                        sh 'docker rmi ${DOCKER_HUB_REPO}:latest'
+                        sh 'docker rmi ${DOCKER_HUB_REPO}:${DOCKER_IMAGE_TAG}'
                     } else {
-                        bat 'docker rmi %DOCKER_HUB_REPO%:latest'
+                        bat 'docker rmi %DOCKER_HUB_REPO%:%DOCKER_IMAGE_TAG%'
                     }
                 } catch (Exception e) {
                     echo "Image has already been removed or does not exist."
