@@ -1,5 +1,5 @@
 import os
-from Utilities.utils import SCORES_FILE_NAME
+from utils import SCORES_FILE_NAME
 
 
 def add_score(game_diff):
