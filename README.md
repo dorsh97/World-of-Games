@@ -96,6 +96,7 @@ This project uses Jenkins for continuous integration and continuous deployment. 
 ## Manual Testing
 
 You can also perform end-to-end testing of the Flask app manually from the `Utilities` folder.
+
 The script will return a system exit code: 0 indicates that all tests passed successfully, while 1 indicates that the testing has failed.
 
 ```bash
