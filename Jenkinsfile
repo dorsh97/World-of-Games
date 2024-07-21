@@ -85,13 +85,13 @@ e2e_test()
             steps {
                 script {
                     if (isUnix()) {
-                        sh 'touch "" > Scores.txt'
+                        sh 'echo "" > Scores.txt'
                         sh 'docker login -u ${DOCKER_HUB_CREDENTIALS_USR} -p ${DOCKER_HUB_CREDENTIALS_PSW}'
                         sh 'docker push ${DOCKER_HUB_REPO}:latest'
                         sh 'docker rm -vf ${TESTING_CONTAINER_NAME}'
                         sh 'docker rmi ${DOCKER_HUB_REPO}:latest'
                     } else {
-                        bat 'touch "" > Scores.txt'
+                        bat 'echo "" > Scores.txt'
                         bat 'docker login -u %DOCKER_HUB_CREDENTIALS_USR% -p %DOCKER_HUB_CREDENTIALS_PSW%'
                         bat 'docker push %DOCKER_HUB_REPO%:latest'
                         bat 'docker rm -vf %TESTING_CONTAINER_NAME%'
