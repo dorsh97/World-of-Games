@@ -58,7 +58,7 @@ The application will start on http://localhost:5000
 ### Starting Over
 In order to start over, you need to clear the contents of Scores.txt
 ```bash
-touch "" > Scores.txt
+echo "" > Scores.txt
 ```
 
 ## Docker
