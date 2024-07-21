@@ -1,4 +1,4 @@
-import os
+import sys
 SCORES_FILE_NAME = "Scores.txt"
 BAD_RETURN_CODE = -1
 
@@ -20,6 +20,7 @@ def check_user_input_num(user_input):
             x = input("Please type a number: ")
 
 
-def screen_cleaner():
-    os.system('cls')
+def screen_cleaner(rand_list):
+    sys.stdout.write('\r' + ' ' * len(str(rand_list)) + '\r')
+    sys.stdout.flush()
 
