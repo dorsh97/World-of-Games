@@ -1,7 +1,7 @@
 services:
   web:
     build: .
-    image: dorsh97/wog-flask
-    container_name: wog-flask-container
+    image: dorsh97/wog
+    container_name: wog-container
     ports:
       - "5000:5000"
