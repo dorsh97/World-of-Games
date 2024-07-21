@@ -55,6 +55,12 @@ python main_score.py
 ```
 The application will start on http://localhost:5000
 
+### Starting over
+In order to start over, you need to clear the contents of Scores.txt
+```bash
+touch "" > Scores.txt
+```
+
 ## Docker
 
 You can also use Docker to run the Scores Flask application. 
