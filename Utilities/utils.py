@@ -20,6 +20,7 @@ def check_user_input_num(user_input):
         except ValueError:
             x = input("Please type a number: ")
 
+
 def clear_screen():
     if os.name == 'posix':
         os.system('clear')
