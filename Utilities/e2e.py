@@ -3,6 +3,7 @@ from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.options import ChromiumOptions
 from selenium.webdriver.common.by import By
+import sys
 
 chrome_options = ChromiumOptions()
 service = Service(ChromeDriverManager().install(), options=chrome_options)
@@ -24,3 +25,8 @@ def main_function(scores_url):
         return 0
     else:
         return -1
+
+
+port = sys.argv[1]
+url = f"http://localhost:{port}"
+sys.exit(main_function(url)) 
