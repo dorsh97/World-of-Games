@@ -5,8 +5,9 @@ pipeline {
     
     environment {
         DOCKER_HUB_CREDENTIALS = credentials('dockerhub-credentials-id')
-        // Parameters for testing:
+        // Parameters for testing and pushing:
         DOCKER_HUB_REPO = 'dorsh97/wog'
+        DOCKER_IMAGE_TAG = 'latest'
         TESTING_CONTAINER_NAME = 'wog-container'
         TESTING_PORT = '8777'
         TESTING_SCORE_VALUE = '100'
@@ -87,15 +88,15 @@ e2e_test()
                     if (isUnix()) {
                         sh 'echo "" > Scores.txt'
                         sh 'docker login -u ${DOCKER_HUB_CREDENTIALS_USR} -p ${DOCKER_HUB_CREDENTIALS_PSW}'
-                        sh 'docker push ${DOCKER_HUB_REPO}:latest'
+                        sh 'docker push ${DOCKER_HUB_REPO}:${DOCKER_IMAGE_TAG}'
                         sh 'docker rm -vf ${TESTING_CONTAINER_NAME}'
-                        sh 'docker rmi ${DOCKER_HUB_REPO}:latest'
+                        sh 'docker rmi ${DOCKER_HUB_REPO}:${DOCKER_IMAGE_TAG}'
                     } else {
                         bat 'echo "" > Scores.txt'
                         bat 'docker login -u %DOCKER_HUB_CREDENTIALS_USR% -p %DOCKER_HUB_CREDENTIALS_PSW%'
-                        bat 'docker push %DOCKER_HUB_REPO%:latest'
+                        bat 'docker push %DOCKER_HUB_REPO%:%DOCKER_IMAGE_TAG%'
                         bat 'docker rm -vf %TESTING_CONTAINER_NAME%'
-                        bat 'docker rmi %DOCKER_HUB_REPO%:latest'
+                        bat 'docker rmi %DOCKER_HUB_REPO%:%DOCKER_IMAGE_TAG%'
                     }
                 }
             }
