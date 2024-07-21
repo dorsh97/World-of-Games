@@ -37,9 +37,9 @@ pipeline {
             steps {
                 script {
                     if (isUnix()) {
-                        sh 'docker run --name ${TESTING_CONTAINER_NAME} -d -p ${TESTING_PORT}:5000 ${DOCKER_HUB_REPO}:latest'
+                        sh 'docker run --name ${TESTING_CONTAINER_NAME} -d -p ${TESTING_PORT}:5000 -v $(pwd)/Scores.txt:/app/Scores.txt ${DOCKER_HUB_REPO}:latest'
                     } else {
-                        bat 'docker run --name %TESTING_CONTAINER_NAME% -d -p %TESTING_PORT%:5000 %DOCKER_HUB_REPO%:latest'
+                        bat 'docker run --name %TESTING_CONTAINER_NAME% -d -p %TESTING_PORT%:5000 -v %cd%\\Scores.txt:/app/Scores.txt %DOCKER_HUB_REPO%:latest'
                     }
                 }
             }
