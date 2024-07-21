@@ -57,7 +57,7 @@ The application will start on http://localhost:5000
 
 ## Docker
 
-You can also use Docker to play the game while running the Scores Flask application simultaneously. 
+You can also use Docker to run the Scores Flask application. 
 
 ### Building and running the Docker Container
 ```bash
