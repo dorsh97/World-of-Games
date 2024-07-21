@@ -21,10 +21,10 @@ def check_user_input_num(user_input):
             x = input("Please type a number: ")
 
 def clear_screen():
-    if os.name == 'nt':
-        os.system('cls')
-    else:
+    if os.name == 'posix':
         os.system('clear')
+    else:
+        os.system('cls')
 
 
 def clear_line(rand_list):
