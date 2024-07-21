@@ -72,12 +72,12 @@ The application will be available on http://localhost:5000
 
 ### Stopping and Removing the Docker Container
 ```bash
-docker rm -vf wog-flask-container
+docker rm -vf wog-container
 ```
 
 ### Removing the Docker Image
 ```bash
-docker rmi dorsh97/wog-flask
+docker rmi dorsh97/wog
 ```
 
 ## Jenkins CI/CD Pipeline
