@@ -53,7 +53,7 @@ You can also open the entire project using any Python-compatible IDE.
 ```bash
 python main_score.py
 ```
-The application will start on http://localhost:5000
+* The application will be available on http://localhost:5000
 
 ### Starting Over
 In order to start over, you need to clear the contents of Scores.txt
@@ -69,7 +69,7 @@ You can also use Docker to run the Scores Flask application.
 ```bash
 docker-compose up -d
 ```
-The application will be available on http://localhost:5000
+* The application will be available on http://localhost:5000
 
 ### Starting the game inside the Container
 ```bash
