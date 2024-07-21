@@ -40,6 +40,6 @@ def start_play():
         play_again = input("Would you like to play again? (Yes/No): ").strip().lower()
         clear_screen()
         if play_again != 'yes':
-            print("Thank you for playing!")
+            print(f"Thank you for playing, {username}!")
             break
 
