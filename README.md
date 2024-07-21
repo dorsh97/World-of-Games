@@ -61,12 +61,12 @@ You can also use Docker to play the game while running the Scores Flask applicat
 
 ### Building and running the Docker Container
 ```bash
-docker-compose up
+docker-compose up -d
 ```
 
 ### Starting the game
 ```bash
-python main.py
+docker exec -it wog-container python main.py
 ```
 The application will be available on http://localhost:5000
 
