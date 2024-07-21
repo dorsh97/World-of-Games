@@ -3,10 +3,10 @@ from Games.guess_game import play as guess_game_play
 from Games.memory_game import play as memory_game_play
 from Utilities.utils import check_range_int
 from Utilities.score import add_score
+from Utilities.utils import username
 
 
-def welcome(username='blank'):
-    global username
+def welcome():
     if username == 'blank':
         username = input("Please choose a username: ")
     print(f"Hi {username} and welcome to the World of Games: The Epic Journey.")
