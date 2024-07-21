@@ -7,3 +7,5 @@ services:
     container_name: wog-container
     ports:
       - "5000:5000"
+    volumes:
+      - ./Scores.txt:/app/Scores.txt
