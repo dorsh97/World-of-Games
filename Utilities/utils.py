@@ -1,7 +1,7 @@
 import sys
 SCORES_FILE_NAME = "Scores.txt"
 BAD_RETURN_CODE = -1
-global username = 'blank'
+username = 'blank'
 
 def check_range_int(user_input, min_number, max_number):
     x = user_input
