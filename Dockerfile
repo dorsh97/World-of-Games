@@ -1,6 +1,5 @@
 FROM python:slim
 WORKDIR /app
-RUN if [ ! -f Scores.txt ]; then touch Scores.txt; fi
 COPY . .
 RUN pip install -r requirements.txt
 EXPOSE 5000
