@@ -101,7 +101,7 @@ You can also perform end-to-end testing of the Flask app manually from the `Util
 cd Utilities
 ```
 ```bash
-python e2e.py 5000
+python e2e.py 5000 # 5000 is the port number
 ```
 
 ##
