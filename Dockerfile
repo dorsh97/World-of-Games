@@ -1,8 +1,7 @@
 FROM python:slim
 WORKDIR /app
-COPY . .
 RUN if [ ! -f Scores.txt ]; then touch Scores.txt; fi
-COPY Scores.txt /Scores.txt
+COPY . .
 RUN pip install -r requirements.txt
 EXPOSE 5000
 ENV FLASK_APP=main_score.py
