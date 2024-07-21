@@ -6,7 +6,9 @@ from Utilities.score import add_score
 
 
 def welcome():
-    username = input("Please choose a username: ")
+    global username
+    if not username:
+        username = input("Please choose a username: ")
     print(f"Hi {username} and welcome to the World of Games: The Epic Journey.")
 
 
