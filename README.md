@@ -23,8 +23,8 @@ Additionally, the project uses a Jenkins pipeline for CI/CD, Docker for containe
 
 ### Requirements
 - Python 3.x
-- Python-compatible IDE (optional)
 - pip (Python package installer)
+- Python-compatible IDE (optional)
 - Docker (optional, for containerization)
 - Jenkins (optional, for CI/CD pipeline)
 
