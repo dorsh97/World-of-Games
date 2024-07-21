@@ -1,4 +1,5 @@
 import sys
+import os
 SCORES_FILE_NAME = "Scores.txt"
 BAD_RETURN_CODE = -1
 username = 'blank'
@@ -19,8 +20,14 @@ def check_user_input_num(user_input):
         except ValueError:
             x = input("Please type a number: ")
 
+def clear_screen():
+    if os.name == 'nt':
+        os.system('cls')
+    else:
+        os.system('clear')
 
-def screen_cleaner(rand_list):
+
+def clear_line(rand_list):
     sys.stdout.write('\r' + ' ' * len(str(rand_list)) + '\r')
     sys.stdout.flush()
 
