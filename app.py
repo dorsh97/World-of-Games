@@ -5,9 +5,9 @@ from Utilities.utils import check_range_int
 from Utilities.score import add_score
 
 
-def welcome():
+def welcome(username=None):
     global username
-    if not username:
+    if username is None:
         username = input("Please choose a username: ")
     print(f"Hi {username} and welcome to the World of Games: The Epic Journey.")
 
