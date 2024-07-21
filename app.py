@@ -4,7 +4,6 @@ from Games.memory_game import play as memory_game_play
 from Utilities.utils import check_range_int
 from Utilities.score import add_score
 from Utilities.utils import username
-from Utilities.utils import clear_screen
 
 
 def welcome():
