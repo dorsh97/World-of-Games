@@ -49,22 +49,10 @@ pipeline {
         stage('Test') {
             steps {
                 script {
-                    writeFile file: 'e2e_test.py', text: """
-import sys
-from Utilities.e2e import main_function
-
-def e2e_test():
-    port = sys.argv[1]
-    url = f"http://localhost:{port}"
-    sys.exit(main_function(url))
-
-e2e_test()
-"""
-                    
                     if (isUnix()) {
                         sh 'pip install -r requirements.txt'
                         try {
-                            sh 'python e2e_test.py ${TESTING_PORT}'
+                            sh 'python Utilities/e2e.py ${TESTING_PORT}'
                             echo "Testing Successful"
                         } catch (Exception e) {
                             error "Testing Failed"
@@ -72,7 +60,7 @@ e2e_test()
                     } else {
                         bat 'pip install -r requirements.txt'
                         try {
-                            bat 'python e2e_test.py %TESTING_PORT%'
+                            bat 'python Utilities\\e2e.py %TESTING_PORT%'
                             echo "Testing Successful"
                         } catch (Exception e) {
                             error "Testing Failed"
