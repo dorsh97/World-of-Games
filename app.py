@@ -7,6 +7,7 @@ from Utilities.utils import username
 
 
 def welcome():
+    global username
     if username == 'blank':
         username = input("Please choose a username: ")
     print(f"Hi {username} and welcome to the World of Games: The Epic Journey.")
