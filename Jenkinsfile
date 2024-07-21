@@ -40,6 +40,8 @@ pipeline {
                     if (isUnix()) {
                         sh 'docker run --name ${TESTING_CONTAINER_NAME} -d -p ${TESTING_PORT}:5000 -v $(pwd)/Scores.txt:/app/Scores.txt ${DOCKER_HUB_REPO}:latest'
                     } else {
+                        bat 'echo DEBUG: DOCKER_HUB_REPO=%DOCKER_HUB_REPO%'
+                        bat 'echo DEBUG: DOCKER_IMAGE_TAG=%DOCKER_IMAGE_TAG%'
                         bat 'docker run --name %TESTING_CONTAINER_NAME% -d -p %TESTING_PORT%:5000 -v %cd%\\Scores.txt:/app/Scores.txt %DOCKER_HUB_REPO%:latest'
                     }
                 }
