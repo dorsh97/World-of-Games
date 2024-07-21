@@ -37,7 +37,6 @@ def start_play():
         else:
             print("You failed. Better luck next time!")
         play_again = input("Would you like to play again? (Yes/No): ").strip().lower()
-        clear_screen()
         if play_again != 'yes':
             print(f"Thank you for playing, {username}!")
             break
