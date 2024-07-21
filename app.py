@@ -4,6 +4,7 @@ from Games.memory_game import play as memory_game_play
 from Utilities.utils import check_range_int
 from Utilities.score import add_score
 from Utilities.utils import username
+from Utilities.utils import clear_screen
 
 
 def welcome():
@@ -37,6 +38,7 @@ def start_play():
         else:
             print("You failed. Better luck next time!")
         play_again = input("Would you like to play again? (Yes/No): ").strip().lower()
+        clear_screen()
         if play_again != 'yes':
             print("Thank you for playing!")
             break
