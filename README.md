@@ -8,7 +8,7 @@ There are 3 main games to play:
 2. Guessing Game
 3. Memory Game
 
-The project includes functionality for displaying your score on a web page using Flask.
+All three games and the scoreboard are unified into a single Flask web application — no terminal required, just run the app and play in your browser.
 
 Additionally, the project uses a Jenkins pipeline for CI/CD, Docker for containerization, and includes Selenium testing for the Flask app.
 
@@ -43,27 +43,23 @@ pip install -r requirements.txt
 
 ## Usage
 
-### Starting the Game
+### Starting the App
 ```bash
-python main.py
-```
-You can also open the entire project using any Python-compatible IDE.
-
-### Running the Scores Flask Application
-```bash
-python main_score.py
+python app.py
 ```
 * The application will be available on http://localhost:5000
 
+You can also open the entire project using any Python-compatible IDE.
+
 ### Starting Over
-In order to start over, you need to clear the contents of Scores.txt
+You can reset your score directly from the scoreboard page in the app, or manually:
 ```bash
 echo "" > Scores.txt
 ```
 
 ## Docker
 
-You can also use Docker to run the Scores Flask application. 
+You can also use Docker to run the unified Flask application.
 
 ### Building and running the Docker Container
 ```bash
