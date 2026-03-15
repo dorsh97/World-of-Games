@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% block title %}Welcome — World of Games{% endblock %}
+
+{% block content %}
+<div class="text-center" style="margin-bottom: 3rem; margin-top: 1rem;">
+    <span class="icon-xl" style="margin-bottom: 1rem;">🎮</span>
+    <h1>World of Games</h1>
+    <p class="subtitle">The Epic Journey</p>
+</div>
+
+<div class="card" style="max-width: 420px; margin: 0 auto;">
+
+    {% if username %}
+    <!-- Returning player — show the three options -->
+    <h2 class="mb-2">Welcome back, {{ username }}!</h2>
+    <p class="text-muted mb-6" style="font-size: 0.9rem;">What would you like to do?</p>
+
+    <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+
+        <a href="/select" class="btn btn-primary btn-lg" style="text-align: center;">
+            ▶ Continue where I left off
+        </a>
+
+        <form method="POST" action="/start-over"
+              onsubmit="return confirm('This will reset your score but keep your username. Continue?')">
+            <button type="submit" class="btn btn-outline btn-full btn-lg">
+                🔄 Start again (reset score)
+            </button>
+        </form>
+
+        <a href="/new-player"
+           onclick="return confirm('This will clear your username and reset your score. Continue?')"
+           class="btn btn-ghost btn-lg" style="text-align: center;">
+            👤 New player
+        </a>
+
+    </div>
+
+    {% else %}
+    <!-- New player — show the username form -->
+    <h2 class="mb-2">Let's get started</h2>
+    <p class="text-muted mb-6" style="font-size: 0.9rem;">
+        Enter a username to track your score across three games.
+    </p>
+
+    <form method="POST" action="/">
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input
+                type="text"
+                id="username"
+                name="username"
+                placeholder="e.g. Player1"
+                maxlength="30"
+                autocomplete="off"
+                required
+            >
+        </div>
+        <button type="submit" class="btn btn-primary btn-full btn-lg">
+            Start Playing →
+        </button>
+    </form>
+    {% endif %}
+
+</div>
+
+<div style="display: flex; gap: 1rem; margin-top: 2rem; justify-content: center; flex-wrap: wrap;">
+    <div class="card-sm text-center" style="flex: 1; min-width: 160px;">
+        <div style="font-size: 1.75rem; margin-bottom: 0.4rem;">🧠</div>
+        <div style="font-weight: 600; font-size: 0.9rem;">Memory Game</div>
+        <div class="text-muted" style="font-size: 0.8rem; margin-top: 0.2rem;">Memorize sequences</div>
+    </div>
+    <div class="card-sm text-center" style="flex: 1; min-width: 160px;">
+        <div style="font-size: 1.75rem; margin-bottom: 0.4rem;">🎯</div>
+        <div style="font-weight: 600; font-size: 0.9rem;">Guess Game</div>
+        <div class="text-muted" style="font-size: 0.8rem; margin-top: 0.2rem;">Beat the computer</div>
+    </div>
+    <div class="card-sm text-center" style="flex: 1; min-width: 160px;">
+        <div style="font-size: 1.75rem; margin-bottom: 0.4rem;">💱</div>
+        <div style="font-weight: 600; font-size: 0.9rem;">Currency Roulette</div>
+        <div class="text-muted" style="font-size: 0.8rem; margin-top: 0.2rem;">USD → ILS</div>
+    </div>
+</div>
+{% endblock %}

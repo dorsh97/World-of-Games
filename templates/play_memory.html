@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% block title %}Memory Game{% endblock %}
+
+{% block content %}
+<div style="margin-bottom: 2rem;">
+    <a href="/game/1" class="text-muted" style="text-decoration: none; font-size: 0.875rem;">← Change difficulty</a>
+</div>
+
+<div class="card text-center">
+    <span class="icon-xl" style="margin-bottom: 0.75rem;">🧠</span>
+    <h1 style="font-size: 1.6rem; margin-bottom: 0.4rem;">Memory Game</h1>
+    <p class="subtitle">Memorize the numbers, then type them back.</p>
+
+    <hr class="divider">
+
+    <!-- Numbers display (visible at start) -->
+    <div id="numbers-display" style="margin: 2rem 0;">
+        <p class="text-muted" style="font-size: 0.875rem; margin-bottom: 1rem;">Remember these {{ difficulty }} number{{ 's' if difficulty > 1 else '' }}:</p>
+        <div style="
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        ">
+            {% for num in sequence %}
+            <span style="
+                background: rgba(124,58,237,0.2);
+                border: 1px solid rgba(124,58,237,0.4);
+                color: #a78bfa;
+                font-size: 1.75rem;
+                font-weight: 700;
+                padding: 0.5rem 1rem;
+                border-radius: 10px;
+                min-width: 3.5rem;
+                text-align: center;
+            ">{{ num }}</span>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Countdown -->
+    <div id="timer-section" style="margin-bottom: 1.5rem;">
+        <p class="text-muted" style="font-size: 0.875rem;">Hiding in <span id="timer" style="color: #a78bfa; font-weight: 700;">{{ display_time }}</span> second{{ 's' if display_time != 1 else '' }}…</p>
+    </div>
+
+    <!-- Input form (hidden until timer expires) -->
+    <form id="guess-form" method="POST" action="/play/1" style="display: none;">
+        <p class="text-muted" style="font-size: 0.875rem; margin-bottom: 1rem;">
+            Type the {{ difficulty }} number{{ 's' if difficulty > 1 else '' }}, separated by commas:
+        </p>
+        <div class="form-group" style="max-width: 360px; margin: 0 auto 1.5rem;">
+            <input
+                type="text"
+                name="sequence"
+                id="sequence-input"
+                placeholder="{{ sequence | join(', ') | replace(sequence | join(', '), '?, ?' * (difficulty - 1) + '?') }}"
+                autocomplete="off"
+                required
+            >
+            <p class="text-muted mt-2" style="font-size: 0.8rem;">e.g. 42, 17, 85</p>
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg">Submit Answer</button>
+    </form>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const timerEl       = document.getElementById('timer');
+    const timerSection  = document.getElementById('timer-section');
+    const numbersDisplay = document.getElementById('numbers-display');
+    const guessForm     = document.getElementById('guess-form');
+
+    let timeLeft = {{ display_time }};
+
+    const tick = setInterval(function () {
+        timeLeft--;
+        timerEl.textContent = timeLeft;
+
+        if (timeLeft <= 0) {
+            clearInterval(tick);
+            numbersDisplay.style.transition = 'opacity 0.4s';
+            numbersDisplay.style.opacity = '0';
+            setTimeout(function () {
+                numbersDisplay.style.display = 'none';
+                timerSection.style.display = 'none';
+                guessForm.style.display = 'block';
+                document.getElementById('sequence-input').focus();
+            }, 400);
+        }
+    }, 1000);
+});
+</script>
+{% endblock %}

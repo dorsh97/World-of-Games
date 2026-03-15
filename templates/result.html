@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block title %}{{ 'You Won!' if result else 'Game Over' }} — {{ game_name }}{% endblock %}
+
+{% block content %}
+<div class="card text-center">
+
+    {% if result %}
+    <!-- WIN -->
+    <div style="
+        background: rgba(16,185,129,0.1);
+        border: 1px solid rgba(16,185,129,0.3);
+        border-radius: 12px;
+        padding: 2rem;
+        margin-bottom: 1.5rem;
+    ">
+        <div style="font-size: 4rem; line-height: 1; margin-bottom: 0.75rem;">🎉</div>
+        <h1 style="color: #10b981; font-size: 2rem; margin-bottom: 0.5rem;">You Won!</h1>
+        <p style="color: #6ee7b7; font-size: 1rem;">
+            Great job on <strong>{{ game_name }}</strong> at difficulty {{ difficulty }}!
+        </p>
+    </div>
+
+    <div style="margin-bottom: 1.5rem;">
+        <p class="text-muted" style="font-size: 0.875rem; margin-bottom: 0.3rem;">Points earned this round</p>
+        <span style="
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #a78bfa;
+        ">+{{ score_earned }}</span>
+    </div>
+
+    {% else %}
+    <!-- LOSE -->
+    <div style="
+        background: rgba(239,68,68,0.08);
+        border: 1px solid rgba(239,68,68,0.25);
+        border-radius: 12px;
+        padding: 2rem;
+        margin-bottom: 1.5rem;
+    ">
+        <div style="font-size: 4rem; line-height: 1; margin-bottom: 0.75rem;">😔</div>
+        <h1 style="color: #ef4444; font-size: 2rem; margin-bottom: 0.5rem;">Not Quite!</h1>
+        <p style="color: #fca5a5; font-size: 1rem;">
+            Better luck next time on <strong>{{ game_name }}</strong>!
+        </p>
+    </div>
+    {% endif %}
+
+    <hr class="divider">
+
+    <!-- Action buttons -->
+    <div style="display: flex; flex-direction: column; gap: 0.75rem; max-width: 320px; margin: 0 auto;">
+        <a href="/play/{{ game_num }}" class="btn btn-primary btn-lg">
+            {{ icon }} Play Again
+        </a>
+        <a href="/select" class="btn btn-outline btn-lg">
+            🎲 Choose Different Game
+        </a>
+        <a href="/score" class="btn btn-ghost">
+            🏆 View Scoreboard
+        </a>
+    </div>
+</div>
+{% endblock %}

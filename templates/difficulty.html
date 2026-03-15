@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% block title %}Difficulty — {{ game_name }}{% endblock %}
+
+{% block content %}
+<div style="margin-bottom: 2rem;">
+    <a href="/select" class="text-muted" style="text-decoration: none; font-size: 0.875rem;">← Back to games</a>
+</div>
+
+<div class="card">
+    <div class="text-center" style="margin-bottom: 2rem;">
+        <span class="icon-xl" style="margin-bottom: 0.75rem;">{{ icon }}</span>
+        <h1 style="font-size: 1.6rem;">{{ game_name }}</h1>
+        <p class="subtitle">Select a difficulty level (1 = easiest, 5 = hardest)</p>
+    </div>
+
+    <form method="POST" action="/game/{{ game_num }}">
+        <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.75rem; margin-bottom: 2rem;">
+            {% set diff_labels = {
+                1: ("Beginner", "🟢"),
+                2: ("Easy",     "🟡"),
+                3: ("Medium",   "🟠"),
+                4: ("Hard",     "🔴"),
+                5: ("Expert",   "💀")
+            } %}
+            {% for d in range(1, 6) %}
+            <label style="cursor: pointer;">
+                <input type="radio" name="difficulty" value="{{ d }}"
+                       style="display: none;"
+                       {% if d == 1 %}checked{% endif %}
+                       onchange="updateSelection({{ d }})">
+                <div id="diff-{{ d }}" style="
+                    border: 2px solid #2e2e4e;
+                    border-radius: 10px;
+                    padding: 1rem 0.5rem;
+                    text-align: center;
+                    transition: all 0.15s;
+                    background: #1e1e35;
+                    {% if d == 1 %}border-color: #7c3aed; background: rgba(124,58,237,0.1);{% endif %}
+                ">
+                    <div style="font-size: 1.5rem; margin-bottom: 0.25rem;">{{ diff_labels[d][1] }}</div>
+                    <div style="font-size: 1.5rem; font-weight: 700; color: #a78bfa;">{{ d }}</div>
+                    <div style="font-size: 0.7rem; color: #94a3b8; margin-top: 0.2rem;">{{ diff_labels[d][0] }}</div>
+                </div>
+            </label>
+            {% endfor %}
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-full btn-lg">
+            Start Game →
+        </button>
+    </form>
+</div>
+
+<script>
+    function updateSelection(selected) {
+        for (let i = 1; i <= 5; i++) {
+            const el = document.getElementById('diff-' + i);
+            if (i === selected) {
+                el.style.borderColor = '#7c3aed';
+                el.style.background = 'rgba(124,58,237,0.1)';
+            } else {
+                el.style.borderColor = '#2e2e4e';
+                el.style.background = '#1e1e35';
+            }
+        }
+    }
+</script>
+{% endblock %}

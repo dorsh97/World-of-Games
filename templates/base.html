@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}World of Games{% endblock %}</title>
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg:            #0d0d1a;
+            --surface:       #161627;
+            --surface2:      #1e1e35;
+            --border:        #2e2e4e;
+            --primary:       #7c3aed;
+            --primary-hover: #6d28d9;
+            --primary-light: #a78bfa;
+            --accent:        #06b6d4;
+            --success:       #10b981;
+            --success-light: #d1fae5;
+            --danger:        #ef4444;
+            --danger-light:  #fee2e2;
+            --text:          #e2e8f0;
+            --text-muted:    #94a3b8;
+            --text-faint:    #475569;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        /* ── Nav ──────────────────────────────────────────────── */
+        nav {
+            background: var(--surface);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .nav-logo {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary-light);
+            text-decoration: none;
+            letter-spacing: -0.3px;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+        }
+
+        .nav-badge {
+            background: var(--primary);
+            color: #fff;
+            padding: 0.2rem 0.7rem;
+            border-radius: 9999px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .nav-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.15s;
+        }
+        .nav-link:hover { color: var(--primary-light); }
+
+        /* ── Layout ───────────────────────────────────────────── */
+        main {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem 5rem;
+        }
+
+        /* ── Cards ────────────────────────────────────────────── */
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 2rem 2.5rem;
+        }
+
+        .card-sm {
+            background: var(--surface2);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1.25rem 1.5rem;
+        }
+
+        /* ── Typography ───────────────────────────────────────── */
+        h1 { font-size: 2rem; font-weight: 700; letter-spacing: -0.5px; }
+        h2 { font-size: 1.4rem; font-weight: 600; }
+        h3 { font-size: 1.1rem; font-weight: 600; }
+
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-top: 0.4rem;
+        }
+
+        /* ── Buttons ──────────────────────────────────────────── */
+        .btn {
+            display: inline-block;
+            padding: 0.7rem 1.6rem;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            text-decoration: none;
+            transition: all 0.15s ease;
+            text-align: center;
+        }
+        .btn-primary {
+            background: var(--primary);
+            color: #fff;
+        }
+        .btn-primary:hover {
+            background: var(--primary-hover);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 15px rgba(124, 58, 237, 0.35);
+        }
+        .btn-outline {
+            background: transparent;
+            color: var(--primary-light);
+            border: 1px solid var(--primary);
+        }
+        .btn-outline:hover {
+            background: var(--primary);
+            color: #fff;
+        }
+        .btn-ghost {
+            background: var(--surface2);
+            color: var(--text-muted);
+            border: 1px solid var(--border);
+        }
+        .btn-ghost:hover {
+            color: var(--text);
+            border-color: var(--text-muted);
+        }
+        .btn-lg {
+            padding: 0.85rem 2rem;
+            font-size: 1rem;
+        }
+        .btn-full { width: 100%; }
+
+        /* ── Form elements ────────────────────────────────────── */
+        .form-group { margin-bottom: 1.25rem; }
+
+        label {
+            display: block;
+            margin-bottom: 0.4rem;
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            background: var(--surface2);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text);
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.15s, box-shadow 0.15s;
+        }
+        input[type="text"]:focus,
+        input[type="number"]:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.15);
+        }
+
+        /* ── Utility ──────────────────────────────────────────── */
+        .text-center  { text-align: center; }
+        .text-muted   { color: var(--text-muted); }
+        .text-success { color: var(--success); }
+        .text-danger  { color: var(--danger); }
+        .text-primary { color: var(--primary-light); }
+
+        .mt-1 { margin-top: 0.25rem; }
+        .mt-2 { margin-top: 0.5rem; }
+        .mt-4 { margin-top: 1rem; }
+        .mt-6 { margin-top: 1.5rem; }
+        .mt-8 { margin-top: 2rem; }
+        .mb-2 { margin-bottom: 0.5rem; }
+        .mb-4 { margin-bottom: 1rem; }
+        .mb-6 { margin-bottom: 1.5rem; }
+
+        .flex         { display: flex; }
+        .flex-col     { flex-direction: column; }
+        .items-center { align-items: center; }
+        .gap-3        { gap: 0.75rem; }
+        .gap-4        { gap: 1rem; }
+
+        .divider {
+            border: none;
+            border-top: 1px solid var(--border);
+            margin: 1.5rem 0;
+        }
+
+        /* ── Big icon display ─────────────────────────────────── */
+        .icon-xl {
+            font-size: 3rem;
+            line-height: 1;
+            display: block;
+        }
+
+        /* ── Badge ────────────────────────────────────────────── */
+        .badge {
+            display: inline-block;
+            padding: 0.2rem 0.6rem;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        .badge-primary { background: rgba(124,58,237,0.2); color: var(--primary-light); }
+        .badge-success { background: rgba(16,185,129,0.15); color: var(--success); }
+        .badge-danger  { background: rgba(239,68,68,0.15);  color: var(--danger); }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="/" class="nav-logo">🎮 World of Games</a>
+        <div class="nav-right">
+            {% if username %}
+                <span class="nav-badge">👤 {{ username }}</span>
+                <a href="/select" class="nav-link">🎲 Play</a>
+            {% endif %}
+            <a href="/score" class="nav-link">🏆 Score</a>
+        </div>
+    </nav>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>

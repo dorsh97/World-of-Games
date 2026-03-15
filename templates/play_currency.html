@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block title %}Currency Roulette{% endblock %}
+
+{% block content %}
+<div style="margin-bottom: 2rem;">
+    <a href="/game/3" class="text-muted" style="text-decoration: none; font-size: 0.875rem;">← Change difficulty</a>
+</div>
+
+<div class="card text-center">
+    <span class="icon-xl" style="margin-bottom: 0.75rem;">💱</span>
+    <h1 style="font-size: 1.6rem; margin-bottom: 0.4rem;">Currency Roulette</h1>
+    <p class="subtitle">Guess the value of a USD amount in Israeli Shekels.</p>
+
+    <hr class="divider">
+
+    <div style="margin: 1.5rem 0;">
+        <p class="text-muted" style="font-size: 0.875rem; margin-bottom: 0.75rem;">How much is this in ILS?</p>
+        <div style="
+            background: rgba(6,182,212,0.08);
+            border: 1px solid rgba(6,182,212,0.25);
+            border-radius: 14px;
+            padding: 1.25rem 2rem;
+            display: inline-block;
+        ">
+            <span style="font-size: 3rem; font-weight: 700; color: #06b6d4;">${{ usd_rand }}</span>
+            <span style="font-size: 1.1rem; color: #94a3b8; margin-left: 0.3rem;">USD</span>
+        </div>
+    </div>
+
+    <div style="
+        background: rgba(124,58,237,0.08);
+        border: 1px solid rgba(124,58,237,0.2);
+        border-radius: 8px;
+        padding: 0.6rem 1rem;
+        display: inline-block;
+        margin-bottom: 1.5rem;
+        font-size: 0.8rem;
+        color: #94a3b8;
+    ">
+        Difficulty {{ difficulty }} · allowed margin: ± {{ interval }} ILS
+    </div>
+
+    <form method="POST" action="/play/3" style="max-width: 280px; margin: 0 auto;">
+        <div class="form-group">
+            <label for="guess">Your guess (in ILS ₪)</label>
+            <input
+                type="number"
+                id="guess"
+                name="guess"
+                step="0.01"
+                min="0"
+                placeholder="e.g. 372.50"
+                autocomplete="off"
+                autofocus
+                required
+            >
+        </div>
+        <button type="submit" class="btn btn-primary btn-full btn-lg">Submit Guess</button>
+    </form>
+</div>
+{% endblock %}

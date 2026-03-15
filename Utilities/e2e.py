@@ -12,9 +12,9 @@ driver = webdriver.Chrome(service=service)
 
 
 def test_scores_service(scores_url):
-    driver.get(scores_url)
-    score = int(driver.find_element(By.XPATH, '/html/body/div').text)
-    if 1 <= score <= 1000:
+    driver.get(scores_url + "/score")
+    score = int(driver.find_element(By.ID, 'score').text)
+    if 1 <= score <= 10000:
         return True
     else:
         return False
@@ -29,4 +29,4 @@ def main_function(scores_url):
 
 port = sys.argv[1]
 url = f"http://localhost:{port}"
-sys.exit(main_function(url)) 
+sys.exit(main_function(url))

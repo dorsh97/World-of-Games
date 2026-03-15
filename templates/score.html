@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% block title %}Scoreboard — World of Games{% endblock %}
+
+{% block content %}
+<div style="margin-bottom: 2rem;">
+    <h1>🏆 Scoreboard</h1>
+    <p class="subtitle">Your cumulative score across all games.</p>
+</div>
+
+<div class="card text-center">
+    {% if not error and score is not none %}
+    <p class="text-muted" style="font-size: 0.875rem; margin-bottom: 0.5rem;">Current score</p>
+    <!-- Keep id="score" for e2e test compatibility -->
+    <div id="score" style="
+        font-size: 5rem;
+        font-weight: 800;
+        color: #a78bfa;
+        letter-spacing: -2px;
+        line-height: 1;
+        margin-bottom: 0.5rem;
+    ">{{ score }}</div>
+    <p class="text-muted" style="font-size: 0.875rem;">points</p>
+
+    <hr class="divider">
+
+    <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-bottom: 1.5rem;">
+        <div>
+            <div style="font-size: 1.5rem; font-weight: 700; color: #e2e8f0;">{{ (score / 8) | int }}</div>
+            <div class="text-muted" style="font-size: 0.8rem;">Est. wins</div>
+        </div>
+        <div>
+            <div style="font-size: 1.5rem; font-weight: 700; color: #e2e8f0;">
+                {{ '⭐' * [((score / 100) | int), 5] | min }}
+            </div>
+            <div class="text-muted" style="font-size: 0.8rem;">Rank</div>
+        </div>
+    </div>
+
+    {% else %}
+    <!-- Error / no score yet -->
+    <div id="score" style="display: none;">{{ bad_return }}</div>
+    <div style="margin: 2rem 0;">
+        <div style="font-size: 3rem; margin-bottom: 0.75rem;">📭</div>
+        <h2 style="margin-bottom: 0.5rem;">No score yet</h2>
+        <p class="text-muted">Win a game to start building your score!</p>
+    </div>
+    {% endif %}
+
+    <a href="/select" class="btn btn-primary btn-lg">
+        🎲 Play a Game
+    </a>
+
+    {% if not error and score is not none %}
+    <hr class="divider">
+    <form method="POST" action="/reset-score"
+          onsubmit="return confirm('Are you sure you want to reset your score to 0?')">
+        <button type="submit" class="btn btn-ghost" style="color: #ef4444; border-color: #ef4444;">
+            🗑 Reset Score
+        </button>
+    </form>
+    {% endif %}
+</div>
+
+<!-- Score formula info -->
+<div class="card-sm mt-6" style="text-align: center;">
+    <p class="text-muted" style="font-size: 0.8rem;">
+        Score formula: <span style="color: #a78bfa; font-family: monospace;">(difficulty × 3) + 5</span> points per win
+        &nbsp;·&nbsp; Higher difficulty = more points!
+    </p>
+</div>
+{% endblock %}
